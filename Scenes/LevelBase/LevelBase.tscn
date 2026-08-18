@@ -11,5 +11,5 @@ scale = Vector2(1.1240234, 0.6326829)
 texture = ExtResource("1_tau5y")
 
 [node name="Animal" parent="." unique_id=2038438149 instance=ExtResource("2_bgw71")]
-position = Vector2(423, 167)
+position = Vector2(205, 452)
 freeze = true
