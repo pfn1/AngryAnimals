@@ -1,14 +1,27 @@
 [gd_scene format=3 uid="uid://dwtd3gppj3ncn"]
 
 [ext_resource type="Texture2D" uid="uid://diintowtp2sf7" path="res://assets/env/MainBG.png" id="1_p8rbg"]
+[ext_resource type="PackedScene" uid="uid://4tij1vvjmvs" path="res://Scenes/LevelButton/LevelButton.tscn" id="2_qtv3y"]
+[ext_resource type="AudioStream" uid="uid://bqtciqf2g4d7w" path="res://assets/audio/birdsong.wav" id="3_cmk6n"]
+[ext_resource type="LabelSettings" uid="uid://snaxbsmfc5v" path="res://Resources/CenterText.tres" id="4_i3fi7"]
+
+[sub_resource type="GDScript" id="GDScript_cmk6n"]
+script/source = "extends Control
+
+
+func _ready() -> void:
+	get_tree().paused = false
+"
 
 [node name="Main" type="Control" unique_id=1493023062]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_cmk6n")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=321854527]
 layout_mode = 1
@@ -19,3 +32,51 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_p8rbg")
 expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1582392758]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="LevelButton" parent="HBoxContainer" unique_id=1015834406 instance=ExtResource("2_qtv3y")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="HBoxContainer" unique_id=490215828 instance=ExtResource("2_qtv3y")]
+layout_mode = 2
+level_number = 2
+
+[node name="LevelButton3" parent="HBoxContainer" unique_id=239994097 instance=ExtResource("2_qtv3y")]
+layout_mode = 2
+level_number = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=783751119]
+stream = ExtResource("3_cmk6n")
+autoplay = true
+
+[node name="Title" type="Label" parent="." unique_id=1067833690]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -307.99997
+offset_top = -149.99997
+offset_right = 308.0
+offset_bottom = -52.99997
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.06632251
+text = "ANGRY GOLDIE"
+label_settings = ExtResource("4_i3fi7")

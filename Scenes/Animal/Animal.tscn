@@ -7,9 +7,12 @@
 [ext_resource type="AudioStream" uid="uid://bmu243wuhmcrh" path="res://assets/audio/kick_wood.ogg" id="5_5swx0"]
 [ext_resource type="Texture2D" uid="uid://ld1ucjqkwowc" path="res://assets/items/arrow.png" id="6_x85cc"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nfkcc"]
+bounce = 0.25
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fsxl2"]
-radius = 17.0
-height = 46.0
+radius = 18.0
+height = 58.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_8b3pe"]
 font_size = 24
@@ -18,15 +21,18 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Animal" type="RigidBody2D" unique_id=2038438149]
 input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_nfkcc")
+freeze = true
 contact_monitor = true
 max_contacts_reported = 2
 script = ExtResource("1_vqphk")
 
 [node name="AnimalSprite" type="Sprite2D" parent="." unique_id=672349899]
-scale = Vector2(0.35, 0.35)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_x85cc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=602120677]
+visible = false
 shape = SubResource("CapsuleShape2D_fsxl2")
 
 [node name="Label" type="Label" parent="." unique_id=87305894]
@@ -54,4 +60,6 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_x85cc")
 offset = Vector2(150, 0)
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]

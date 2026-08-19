@@ -30,8 +30,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("drag_input") and _is_dragging:
 		call_deferred("start_release")
 		
-
-
 func _ready() -> void:
 	_object_start = position
 	_arrow_scale_x = arrow.scale.x
@@ -94,15 +92,30 @@ func start_release() -> void:
 	_is_dragging = false
 	freeze = false
 	apply_central_impulse(calculate_impulse())
+	SignalHub.emit_attempt_made()
 	
 func scale_arrow() -> void:
 	var impulse_len: float = calculate_impulse().length()
 	var percentage: float =  clamp(impulse_len / IMPULSE_MAX, 0.0, 1.0)
 	arrow.scale.x = lerpf(_arrow_scale_x, _arrow_scale_x * 2, percentage)
 	arrow.rotation = (_object_start - position).angle()
-	
+
+func die() -> void:
+	SignalHub.emit_animal_delete()
+	queue_free()
+
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("drag_input"):
 		input_event.disconnect(_on_input_event)
 		start_dragging()
 	
+func _on_body_entered(_body: Node) -> void:
+	kick_sound.play()
+	 # Replace with function body.
+
+func _on_sleeping_state_changed() -> void:
+	if sleeping:
+		for body in get_colliding_bodies():
+			if body is Cup:
+				body.die()
+		die()

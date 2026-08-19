@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://4tij1vvjmvs"]
+
+[ext_resource type="Texture2D" uid="uid://bbmuewb6qb7ih" path="res://assets/ui/panel_beige.png" id="1_3681o"]
+[ext_resource type="FontFile" uid="uid://bwxcee421c8gq" path="res://assets/fonts/gemunu-libre-v8-latin-700.ttf" id="2_3r2e7"]
+[ext_resource type="LabelSettings" uid="uid://blyykbr4ut52x" path="res://Resources/LabelText.tres" id="2_145gk"]
+[ext_resource type="Script" uid="uid://b8g6qfh261i50" path="res://Scenes/LevelButton/LevelButton.gd" id="2_anpwf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_anpwf"]
+font = ExtResource("2_3r2e7")
+font_size = 48
+outline_size = 10
+outline_color = Color(0.101867564, 0.10186755, 0.10186755, 1)
+
+[node name="LevelButton" type="TextureButton" unique_id=1015834406]
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture_normal = ExtResource("1_3681o")
+script = ExtResource("2_anpwf")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=296846707]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VB" type="VBoxContainer" parent="MarginContainer" unique_id=514242394]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/VB" unique_id=880299273]
+layout_mode = 2
+text = "99"
+label_settings = SubResource("LabelSettings_anpwf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VB" unique_id=208664237]
+layout_mode = 2
+text = "9999"
+label_settings = ExtResource("2_145gk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2039492293]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

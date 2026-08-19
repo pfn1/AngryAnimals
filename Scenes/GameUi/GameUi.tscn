@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://bd21dabd3m375"]
+
+[ext_resource type="LabelSettings" uid="uid://blyykbr4ut52x" path="res://Resources/LabelText.tres" id="1_mb7aw"]
+[ext_resource type="Script" uid="uid://b50slyalc6qkh" path="res://Scenes/GameUi/GameUi.gd" id="1_tt7lr"]
+[ext_resource type="FontFile" uid="uid://de6l4ame7505i" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="2_anb74"]
+[ext_resource type="LabelSettings" uid="uid://snaxbsmfc5v" path="res://Resources/CenterText.tres" id="2_anolp"]
+[ext_resource type="AudioStream" uid="uid://jvg4j101h1ch" path="res://assets/audio/jazzyfrenchy.mp3" id="5_5hvfd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tt7lr"]
+font = ExtResource("2_anb74")
+font_size = 64
+font_color = Color(0.86828893, 0.8908295, 0.93442357, 1)
+outline_size = 20
+outline_color = Color(0.085912146, 0.04819466, 0.5314266, 1)
+shadow_size = 20
+shadow_color = Color(0.17254902, 0.17254902, 0.9137255, 1)
+shadow_offset = Vector2(10, 10)
+
+[node name="GameUi" type="Control" unique_id=632072054]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_tt7lr")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=664132161]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -195.0
+offset_bottom = 100.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer" unique_id=930551113]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1192235867]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="AttemptHorizontalContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=2035945976]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/AttemptHorizontalContainer" unique_id=1662335655]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Attempts"
+label_settings = ExtResource("1_mb7aw")
+
+[node name="AttemptCount" type="Label" parent="MarginContainer/VBoxContainer/AttemptHorizontalContainer" unique_id=2015412457]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "000"
+label_settings = ExtResource("1_mb7aw")
+
+[node name="LevelHorizontalContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=454245014]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer/LevelHorizontalContainer" unique_id=1527492615]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Level"
+label_settings = ExtResource("1_mb7aw")
+
+[node name="Levelvalue" type="Label" parent="MarginContainer/VBoxContainer/LevelHorizontalContainer" unique_id=1122505112]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+text = "000"
+label_settings = ExtResource("1_mb7aw")
+
+[node name="VbComplete" type="VBoxContainer" parent="." unique_id=1476594976]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelComplete" type="Label" parent="VbComplete" unique_id=919547339]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "LEVEL COMPLETE"
+label_settings = ExtResource("2_anolp")
+
+[node name="PressEscape" type="Label" parent="VbComplete" unique_id=80016160]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Press Escape"
+label_settings = SubResource("LabelSettings_tt7lr")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1608482947]
+stream = ExtResource("5_5hvfd")
+parameters/looping = true
